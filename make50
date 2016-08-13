@@ -1,7 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import re
 import sys
 from subprocess import Popen, PIPE, STDOUT
+import json
 
 # for labeling error messages w/ colors
 class bcolors:
@@ -15,17 +16,67 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 linetypes = {
-    "clang_error": "^\w*.c:\d+:\d+: error: (.*)$"
+    "clang_call": re.compile("^clang (.*)$"),
+    "clang_message": re.compile("^\w*.c:\d+:\d+: \w*: (.*)$"),
+    "make_error": re.compile("^make: Nothing to be done for `(\w*).c'.\s*$")
 }
+
+# load errors from file
+with open('errors.json', 'r') as file:
+    errors = json.loads(file.read())["errors"]
+    for i in range (0, len(errors)):
+        errors[i]["re"] = re.compile(errors[i]["actual"].replace('\\\\', '\\'))
 
 # making their file and gathering errors
 cmd = "make " + sys.argv[1]
 p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True)
-output = p.stdout.read()
+output = p.stdout.read().decode('utf-8')
 outlines = output.split('\n')
 
+# list to store blocks of standard output by error
+blocks = []
+
+error = ''
 for line in outlines:
-    r = re.compile(linetypes["clang_error"])
-    if (r.match(line) != None):
-        print bcolors.OKBLUE + line + bcolors.ENDC
+    # don't print the clang call line
+    if linetypes["clang_call"].match(line):
+        continue
+    
+    is_error = False
+    for error_type in ["clang_message", "make_error"]:
+        if (linetypes[error_type].match(line) != None):
+            is_error = True
+            break
+    
+    if (is_error):
+        blocks.append(error)
+        error = ''
+    
+    if line != '':
+        error += line + '\n'
+        
+blocks.append(error)
+
+for block in blocks:
+    if block == '':
+        continue
+    
+    split_block = block.split('\n', 1)
+    error_line = split_block[0]
+    
+    # print the error line
+    print (bcolors.FAIL + error_line + bcolors.ENDC, end='')
+    if len(split_block) > 1:
+        print (split_block[1])
+    
+    error_found = False
+    for error in errors:
+        if (error["re"].match(block) != None):
+            error_found = True
+            arguments = tuple(error["re"].findall(block))
+            print (bcolors.OKBLUE + error["friendly"].format(*arguments) + bcolors.ENDC)
+            break
+        
+    if (not error_found):
+        print (bcolors.OKBLUE + "This is tricky. Visit us at office hours!" + bcolors.ENDC)
     
