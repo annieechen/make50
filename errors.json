@@ -15,7 +15,35 @@
         },
         {
             "actual": "^\\w*.c:\\d+:\\d+: error: extra tokens at end of #include directive \\[\\-Werror,\\-Wextra\\-tokens\\]\\s*(.+)(.)\\s*",
-            "friendly": "You don't need a {1} after {0} "
+            "friendly": "You don't need a '{1}' after '{0}'"
+        },
+        {
+            "actual": "^\\w*.c:\\d+:\\d+: error: unknown type name 'include'",
+            "friendly": "Include files via '#include' instead of just 'include'."
+        },
+        {
+            "actual": "^\\w*.c:\\d+:\\d+: error: expected '}'",
+            "friendly": "Make sure that all opening brace symbols '{{' are matched with a closing brace '}}'"
+        },
+        {
+            "actual": "^\\w*.c:\\d+:\\d+: note: to match this '{'",
+            "friendly": "Make sure that all opening brace symbols '{{' are matched with a closing brace '}}'"
+        },
+        {
+            "actual": "^make: `.*' is up to date.",
+            "friendly": "There are no new changes to your program to compile. If you've made changes, be sure to save them."
+        },
+        {
+            "actual": "^\\w*.c:(\\d+):\\d+: error: expected ';' at end of declaration",
+            "friendly": "Be sure to include a semicolon at the end of line {0}!"
+        },
+        {
+            "actual": "^\\w*.c:(\\d+):\\d+: \\w*: control (may )?reach(es)? end of non-void function",
+            "friendly": "Make sure your function will always return a value. If your function isn't supposed to return a value, change its return type to 'void'."
+        },
+        {
+            "actual": "make: \\*\\*\\* No rule to make target `(\\w*)'\\.\\s*Stop\\.",
+            "friendly": "Use the 'ls' command to make sure that {0}.c is in your current directory. If not, switch to the correct directory or create the file."
         }
     ]
     

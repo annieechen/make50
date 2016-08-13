@@ -6,7 +6,7 @@ import json
 
 # for labeling error messages w/ colors
 class bcolors:
-    HEADER = '\033[95m'
+    OKPURPLE = '\033[95m'
     OKBLUE = '\033[94m'
     OKGREEN = '\033[92m'
     WARNING = '\033[93m'
@@ -19,7 +19,7 @@ linetypes = {
     "clang_call": re.compile("^clang (.*)$"),
     "clang_message": re.compile("^\w*.c:\d+:\d+: \w*: (.*)$"),
     "make_error": re.compile("^make: Nothing to be done for `(\w*).c'.\s*$"),
-    "error_gen_line": re.compile("^\d+ errors? generated.\s*$")
+    "error_gen_line": re.compile("^\d+ errors? generated.\s*$"),
 }
 
 # load errors from file
@@ -43,6 +43,7 @@ for line in outlines:
     if linetypes["clang_call"].match(line):
         continue
     
+    # check for end-of-output text
     is_end = False
     for end_type in ["error_gen_line"]:
         if (linetypes[end_type].match(line) != None):
@@ -69,15 +70,22 @@ for line in outlines:
         
 blocks.append(error)
 
+errors_found = False
 for block in blocks:
     if block == '':
         continue
+    errors_found = True
     
     split_block = block.split('\n', 1)
     error_line = split_block[0]
     
-    # print the error line
-    print (bcolors.FAIL + error_line + bcolors.ENDC, end=('\n' if len(split_block) > 1 else ''))
+    # print the error line (if warning, this just won't split)
+    split_error_line = error_line.split("error:")
+    # if can be split perfectly
+    if len(split_error_line) == 2:
+        print (bcolors.BOLD + split_error_line[0] + bcolors.FAIL + "error:" + bcolors.ENDC + bcolors.BOLD +  split_error_line[1] + bcolors.ENDC)
+    else:
+        print (bcolors.BOLD + error_line + bcolors.ENDC, end=('\n' if len(split_block) > 1 else ''))
     if len(split_block) > 1:
         print (split_block[1], end='')
     
@@ -86,11 +94,18 @@ for block in blocks:
         if (error["re"].match(block) != None):
             error_found = True
             arguments = tuple(error["re"].findall(block))[0]
-            print (bcolors.OKBLUE + error["friendly"].format(*arguments) + bcolors.ENDC)
+            if type(arguments) == str:
+                arguments = tuple([arguments])
+            print (bcolors.WARNING + error["friendly"].format(*arguments) + bcolors.ENDC)
             break
         
     if (not error_found):
-        print (bcolors.OKBLUE + "This is tricky. Visit us at office hours!" + bcolors.ENDC)
+        print (bcolors.WARNING + "make50 was not able to interpret this error message." + bcolors.ENDC)
         
     print ('')
+
+# if program compiled successfuly (or nothing to update), then print success
+if (not errors_found):
+    print (bcolors.OKGREEN + "Congratulations! Your program compiled successfully :)" + bcolors.ENDC)
+    
     
