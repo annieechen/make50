@@ -18,7 +18,8 @@ class bcolors:
 linetypes = {
     "clang_call": re.compile("^clang (.*)$"),
     "clang_message": re.compile("^\w*.c:\d+:\d+: \w*: (.*)$"),
-    "make_error": re.compile("^make: Nothing to be done for `(\w*).c'.\s*$")
+    "make_error": re.compile("^make: Nothing to be done for `(\w*).c'.\s*$"),
+    "error_gen_line": re.compile("^\d+ errors? generated.\s*$")
 }
 
 # load errors from file
@@ -41,6 +42,17 @@ for line in outlines:
     # don't print the clang call line
     if linetypes["clang_call"].match(line):
         continue
+    
+    is_end = False
+    for end_type in ["error_gen_line"]:
+        if (linetypes[end_type].match(line) != None):
+            is_end = True
+            break
+        
+    if (is_end):
+        blocks.append(error)
+        error = ''
+        break
     
     is_error = False
     for error_type in ["clang_message", "make_error"]:
@@ -65,18 +77,20 @@ for block in blocks:
     error_line = split_block[0]
     
     # print the error line
-    print (bcolors.FAIL + error_line + bcolors.ENDC, end='')
+    print (bcolors.FAIL + error_line + bcolors.ENDC, end=('\n' if len(split_block) > 1 else ''))
     if len(split_block) > 1:
-        print (split_block[1])
+        print (split_block[1], end='')
     
     error_found = False
     for error in errors:
         if (error["re"].match(block) != None):
             error_found = True
-            arguments = tuple(error["re"].findall(block))
+            arguments = tuple(error["re"].findall(block))[0]
             print (bcolors.OKBLUE + error["friendly"].format(*arguments) + bcolors.ENDC)
             break
         
     if (not error_found):
         print (bcolors.OKBLUE + "This is tricky. Visit us at office hours!" + bcolors.ENDC)
+        
+    print ('')
     

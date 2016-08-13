@@ -6,8 +6,16 @@
             "friendly": "Remember that you can't use \"make\" on the {0}.c file! Try running just \"make {0}\""
         },
         {
-            "actual": "^\\w*.c:\\d+:\\d+: \\w*: invalid preprocessing directive\n(\\S+) ",
-            "friendly": "Did you spell {0} incorrectly?"
+            "actual": "^\\w*.c:\\d+:\\d+: error: invalid preprocessing directive\\s*(\\S+) ",
+            "friendly": "Perhaps '{0}' is spelled incorrectly?"
+        },
+        {
+            "actual": "^\\w*.c:(\\d+):\\d+: error: use of undeclared identifier '(.*)'",
+            "friendly": "Make sure to declare '{1}' within scope before line {0}, and check that the variable is spelled correctly.\n" 
+        },
+        {
+            "actual": "^\\w*.c:\\d+:\\d+: error: extra tokens at end of #include directive \\[\\-Werror,\\-Wextra\\-tokens\\]\\s*(.+)(.)\\s*",
+            "friendly": "You don't need a {1} after {0} "
         }
     ]
     
