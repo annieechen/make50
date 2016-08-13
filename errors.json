@@ -1,0 +1,6 @@
+[
+    {
+        "actual": "^make: Nothing to be done for `(\w*).c'.\s*$",
+        "friendly": "Remember to only use `make` with a "
+    }
+]
