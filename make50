@@ -107,5 +107,3 @@ for block in blocks:
 # if program compiled successfuly (or nothing to update), then print success
 if (not errors_found):
     print (bcolors.OKGREEN + "Congratulations! Your program compiled successfully :)" + bcolors.ENDC)
-    
-    

@@ -11,7 +11,7 @@
         },
         {
             "actual": "^\\w*.c:(\\d+):\\d+: error: use of undeclared identifier '(.*)'",
-            "friendly": "Make sure to declare '{1}' within scope before line {0}, and check that the variable is spelled correctly.\n" 
+            "friendly": "Make sure to declare '{1}' within scope before line {0}, and check that the variable is spelled correctly." 
         },
         {
             "actual": "^\\w*.c:\\d+:\\d+: error: extra tokens at end of #include directive \\[\\-Werror,\\-Wextra\\-tokens\\]\\s*(.+)(.)\\s*",
@@ -44,6 +44,14 @@
         {
             "actual": "make: \\*\\*\\* No rule to make target `(\\w*)'\\.\\s*Stop\\.",
             "friendly": "Use the 'ls' command to make sure that {0}.c is in your current directory. If not, switch to the correct directory or create the file."
+        },
+        {
+            "actual": "^\\w*.c:\\d+:\\d+: note: include the header <(.*)> or explicitly provide a declaration for '(\\w*)'",
+            "friendly": "The function '{1}' is defined in the file '{0}'. Include it via '#include <{0}>'"
+        },
+        {
+            "actual": "^\\w*.c:\\d+:\\d+: error: implicitly declaring library function '(\\w*)' with type",
+            "friendly": "Be sure to include (as via '#include') the header file where {0} is declared."
         }
     ]
     
