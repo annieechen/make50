@@ -11,7 +11,7 @@
         },
         {
             "actual": "^[\\w\\/]*.c:(\\d+):\\d+: error: use of undeclared identifier '(.*)'",
-            "friendly": "Make sure to declare '{1}' within scope before line {0}, and check that the variable is spelled correctly." 
+            "friendly": "Make sure to declare '{1}' within scope before line {0}, and check that the variable name is spelled correctly." 
         },
         {
             "actual": "^[\\w\\/]*.c:\\d+:\\d+: error: extra tokens at end of #include directive \\[\\-Werror,\\-Wextra\\-tokens\\]\\s*(.+)(.)\\s*",
@@ -68,6 +68,18 @@
         {
             "actual": "^[\\w\\/]*.c:\\d+:\\d+: error: expected ';' in 'for' statement specifier",
             "friendly": "Be sure to separate the three components of the 'for' loop with semicolons (rather than spaces or commas)."
+        },
+        {
+            "actual": "^[\\w\\/]*.c:\\d+:\\d+: \\w*: using the result of an assignment as a condition without parentheses",
+            "friendly": "When checking for equality in a condition, use a double equals sign (==) instead of a single equals sign (=)."
+        },
+        {
+            "actual": "^[\\w\\/]*.c:\\d+:\\d+: note: place parentheses around the assignment to silence this warning",
+            "friendly": "If trying to compare two values, use a double equals sign (==) instead of a single equals sign (=). If you intended to assign a value here, add parentheses to get rid of the warning."
+        },
+        {
+            "actual": "^[\\w\\/]*.c:\\d+:\\d+: note: use '==' to turn this assignment into an equality comparison",
+            "friendly": "When checking for equality in a condition, use a double equals sign (==) instead of a single equals sign (=)."
         }
     ]
     
