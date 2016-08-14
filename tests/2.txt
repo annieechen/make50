@@ -1,0 +1,6 @@
+[1mtests/2.c:1:19: [91merror:[0m[1m extra tokens at end of #include directive [-Werror,-Wextra-tokens][0m
+#include <stdio.h>;
+                  ^
+                  //
+[93mYou don't need a ';' after '#include <stdio.h>'[0m
+

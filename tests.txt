@@ -1,0 +1,4 @@
+make50 tests/1.c
+make50 tests/DNE
+make50 tests/1
+make50 tests/2
