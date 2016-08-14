@@ -1,0 +1,3 @@
+[1mmake: Nothing to be done for `tests/1.c'.[0m
+[93mRemember that you can't use "make" on the tests/1.c file! Try running just "make tests/1"[0m
+

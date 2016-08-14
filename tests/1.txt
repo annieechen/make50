@@ -1,0 +1,9 @@
+[1mtests/1.c:1:2: [91merror:[0m[1m invalid preprocessing directive[0m
+#inaclude <stdio.h>
+ ^
+tests/1.c:5:5: error: implicitly declaring library function 'printf' with type 'int (const char *, ...)' [-Werror]
+    printf("hello, world\n");
+    ^
+tests/1.c:5:5: note: include the header <stdio.h> or explicitly provide a declaration for 'printf'
+[93mPerhaps '#inaclude' is spelled incorrectly?[0m
+

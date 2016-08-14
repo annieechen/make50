@@ -1,0 +1,3 @@
+[1mmake: *** No rule to make target `tests/DNE'.  Stop.[0m
+[93mUse the 'ls' command to make sure that tests/DNE.c is in your current directory. If not, switch to the correct directory or create the file.[0m
+
