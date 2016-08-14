@@ -2,7 +2,7 @@
     "errors":
     [
         {
-            "actual": "^make: Nothing to be done for `(\\w*).c'.\n",
+            "actual": "^make: Nothing to be done for `([\\w\\/]*).c'.\n",
             "friendly": "Remember that you can't use \"make\" on the {0}.c file! Try running just \"make {0}\""
         },
         {
