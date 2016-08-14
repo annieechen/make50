@@ -6,27 +6,27 @@
             "friendly": "Remember that you can't use \"make\" on the {0}.c file! Try running just \"make {0}\""
         },
         {
-            "actual": "^\\w*.c:\\d+:\\d+: error: invalid preprocessing directive\\s*(\\S+) ",
+            "actual": "^[\\w\\/]*.c:\\d+:\\d+: error: invalid preprocessing directive\\s*(\\S+) ",
             "friendly": "Perhaps '{0}' is spelled incorrectly?"
         },
         {
-            "actual": "^\\w*.c:(\\d+):\\d+: error: use of undeclared identifier '(.*)'",
+            "actual": "^[\\w\\/]*.c:(\\d+):\\d+: error: use of undeclared identifier '(.*)'",
             "friendly": "Make sure to declare '{1}' within scope before line {0}, and check that the variable is spelled correctly." 
         },
         {
-            "actual": "^\\w*.c:\\d+:\\d+: error: extra tokens at end of #include directive \\[\\-Werror,\\-Wextra\\-tokens\\]\\s*(.+)(.)\\s*",
+            "actual": "^[\\w\\/]*.c:\\d+:\\d+: error: extra tokens at end of #include directive \\[\\-Werror,\\-Wextra\\-tokens\\]\\s*(.+)(.)\\s*",
             "friendly": "You don't need a '{1}' after '{0}'"
         },
         {
-            "actual": "^\\w*.c:\\d+:\\d+: error: unknown type name 'include'",
+            "actual": "^[\\w\\/]*.c:\\d+:\\d+: error: unknown type name 'include'",
             "friendly": "Include files via '#include' instead of just 'include'."
         },
         {
-            "actual": "^\\w*.c:\\d+:\\d+: error: expected '}'",
+            "actual": "^[\\w\\/]*.c:\\d+:\\d+: error: expected '}'",
             "friendly": "Make sure that all opening brace symbols '{{' are matched with a closing brace '}}'"
         },
         {
-            "actual": "^\\w*.c:\\d+:\\d+: note: to match this '{'",
+            "actual": "^[\\w\\/]*.c:\\d+:\\d+: note: to match this '{'",
             "friendly": "Make sure that all opening brace symbols '{{' are matched with a closing brace '}}'"
         },
         {
@@ -34,39 +34,39 @@
             "friendly": "There are no new changes to your program to compile. If you've made changes, be sure to save them."
         },
         {
-            "actual": "^\\w*.c:(\\d+):\\d+: error: expected ';' at end of declaration",
+            "actual": "^[\\w\\/]*.c:(\\d+):\\d+: error: expected ';' at end of declaration",
             "friendly": "Be sure to include a semicolon at the end of line {0}!"
         },
         {
-            "actual": "^\\w*.c:(\\d+):\\d+: \\w*: control (may )?reach(es)? end of non-void function",
+            "actual": "^[\\w\\/]*.c:(\\d+):\\d+: \\w*: control (may )?reach(es)? end of non-void function",
             "friendly": "Make sure your function will always return a value. If your function isn't supposed to return a value, change its return type to 'void'."
         },
         {
-            "actual": "make: \\*\\*\\* No rule to make target `(\\w*)'\\.\\s*Stop\\.",
+            "actual": "make: \\*\\*\\* No rule to make target `([\\w\\/]*)'\\.\\s*Stop\\.",
             "friendly": "Use the 'ls' command to make sure that {0}.c is in your current directory. If not, switch to the correct directory or create the file."
         },
         {
-            "actual": "^\\w*.c:\\d+:\\d+: note: include the header <(.*)> or explicitly provide a declaration for '(\\w*)'",
+            "actual": "[\\w\\/]*.c:\\d+:\\d+: note: include the header <(.*)> or explicitly provide a declaration for '(\\w*)'",
             "friendly": "The function '{1}' is defined in the file '{0}'. Include it via '#include <{0}>'"
         },
         {
-            "actual": "^\\w*.c:\\d+:\\d+: error: implicitly declaring library function '(\\w*)' with type",
+            "actual": "^[\\w\\/]*.c:\\d+:\\d+: error: implicitly declaring library function '(\\w*)' with type",
             "friendly": "Be sure to include (as via '#include') the header file where {0} is declared."
         },
         {
-            "actual": "^\\w*.c:\\d+:\\d+: error: implicit declaration of function '(\\w*)' is invalid in C99",
+            "actual": "^[\\w\\/]*.c:\\d+:\\d+: error: implicit declaration of function '(\\w*)' is invalid in C99",
             "friendly": "Make sure the function '{0}' or its prototype exists above where you call it."
         },
         {
-            "actual": "^\\w*.c:\\d+:\\d+: \\w*: incompatible (\\w*) to (\\w*) conversion",
+            "actual": "^[\\w\\/]*.c:\\d+:\\d+: \\w*: incompatible (\\w*) to (\\w*) conversion",
             "friendly": "You are assigning a value to a variable of a different type. Make sure that your value is of type '{1}'."
         },
         {
-            "actual": "^\\w*.c:\\d+:\\d+: \\w*: unused variable '(\\w*)'",
+            "actual": "^[\\w\\/]*.c:\\d+:\\d+: \\w*: unused variable '(\\w*)'",
             "friendly": "The variable '{0}' is never used in your program. Either remove it altogheter or use it."
         },
         {
-            "actual": "^\\w*.c:\\d+:\\d+: error: expected ';' in 'for' statement specifier",
+            "actual": "^[\\w\\/]*.c:\\d+:\\d+: error: expected ';' in 'for' statement specifier",
             "friendly": "Be sure to separate the three components of the 'for' loop with semicolons (rather than spaces or commas)."
         }
     ]
