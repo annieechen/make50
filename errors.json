@@ -11,11 +11,11 @@
         },
         {
             "actual": "^[\\w\\/]*.c:(\\d+):\\d+: error: use of undeclared identifier '(.*)'",
-            "friendly": "Make sure to declare '{1}' within scope before line {0}, and check that the variable name is spelled correctly." 
+            "friendly": "Make sure to declare variable '{1}' by specifying its type within scope before line {0}, and check that the variable name is spelled correctly." 
         },
         {
             "actual": "^[\\w\\/]*.c:\\d+:\\d+: error: extra tokens at end of #include directive \\[\\-Werror,\\-Wextra\\-tokens\\]\\s*(.+)(.)\\s*",
-            "friendly": "You don't need a '{1}' after '{0}'"
+            "friendly": "Don't include a '{1}' after '{0}'"
         },
         {
             "actual": "^[\\w\\/]*.c:\\d+:\\d+: error: unknown type name 'include'",
@@ -80,6 +80,10 @@
         {
             "actual": "^[\\w\\/]*.c:\\d+:\\d+: note: use '==' to turn this assignment into an equality comparison",
             "friendly": "When checking for equality in a condition, use a double equals sign (==) instead of a single equals sign (=)."
+        },
+        {
+            "actual": "^[\\w\\/]*.c:\\d+:\\d+: error: format specifies type '(.*)' but the argument has type '(.*)'",
+            "friendly": "Make sure to use the correct format code (%i for integers, %f for floating point values, %s for strings) in your 'printf' statement."
         }
     ]
     
