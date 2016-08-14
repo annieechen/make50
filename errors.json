@@ -52,6 +52,22 @@
         {
             "actual": "^\\w*.c:\\d+:\\d+: error: implicitly declaring library function '(\\w*)' with type",
             "friendly": "Be sure to include (as via '#include') the header file where {0} is declared."
+        },
+        {
+            "actual": "^\\w*.c:\\d+:\\d+: error: implicit declaration of function '(\\w*)' is invalid in C99",
+            "friendly": "Make sure the function '{0}' or its prototype exists above where you call it."
+        },
+        {
+            "actual": "^\\w*.c:\\d+:\\d+: \\w*: incompatible (\\w*) to (\\w*) conversion",
+            "friendly": "You are assigning a value to a variable of a different type. Make sure that your value is of type '{1}'."
+        },
+        {
+            "actual": "^\\w*.c:\\d+:\\d+: \\w*: unused variable '(\\w*)'",
+            "friendly": "The variable '{0}' is never used in your program. Either remove it altogheter or use it."
+        },
+        {
+            "actual": "^\\w*.c:\\d+:\\d+: error: expected ';' in 'for' statement specifier",
+            "friendly": "Be sure to separate the three components of the 'for' loop with semicolons (rather than spaces or commas)."
         }
     ]
     
