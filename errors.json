@@ -19,7 +19,7 @@
         },
         {
             "actual": "^[\\w\\/]*.c:\\d+:\\d+: error: unknown type name 'include'",
-            "friendly": "Include files via '#include' instead of just 'include'."
+            "friendly": "Include header (.h) files via '#include' instead of just 'include'."
         },
         {
             "actual": "^[\\w\\/]*.c:\\d+:\\d+: error: expected '}'",
@@ -35,6 +35,10 @@
         },
         {
             "actual": "^[\\w\\/]*.c:(\\d+):\\d+: error: expected ';' at end of declaration",
+            "friendly": "Be sure to include a semicolon at the end of line {0}!"
+        },
+        {
+            "actual": "^[\\w\\/]*.c:(\\d+):\\d+: error: expected ';' after expression",
             "friendly": "Be sure to include a semicolon at the end of line {0}!"
         },
         {
