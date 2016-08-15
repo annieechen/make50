@@ -1,0 +1,8 @@
+[1mtests/5.c:1:1: [91merror:[0m[1m unknown type name 'include'[0m
+include <stdio.h>
+^
+tests/5.c:1:9: error: expected identifier or '('
+include <stdio.h>
+        ^
+[93mInclude header (.h) files via '#include' instead of just 'include'.[0m
+

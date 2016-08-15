@@ -1,0 +1,6 @@
+[1mtests/6.c:5:29: [91merror:[0m[1m expected ';' after expression[0m
+    printf("hello, world\n")
+                            ^
+                            ;
+[93mBe sure to include a semicolon at the end of line 5![0m
+

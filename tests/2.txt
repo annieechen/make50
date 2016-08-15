@@ -2,5 +2,5 @@
 #include <stdio.h>;
                   ^
                   //
-[93mYou don't need a ';' after '#include <stdio.h>'[0m
+[93mDon't include a ';' after '#include <stdio.h>'[0m
 

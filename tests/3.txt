@@ -1,0 +1,5 @@
+[1mtests/3.c:5:5: [91merror:[0m[1m use of undeclared identifier 'x'[0m
+    x = 2;
+    ^
+[93mMake sure to declare variable 'x' by specifying its type within scope before line 5, and check that the variable name is spelled correctly.[0m
+
