@@ -22,6 +22,11 @@ linetypes = {
     "error_gen_line": re.compile("^\d+ errors? generated.\s*$"),
 }
 
+# ensure proper usage
+if len(sys.argv) < 2:
+    print (bcolors.FAIL+ "usage: make50 <program>" + bcolors.ENDC)
+    exit()
+        
 # load errors from file
 with open('errors.json', 'r') as file:
     errors = json.loads(file.read())["errors"]
