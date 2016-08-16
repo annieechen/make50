@@ -3,6 +3,7 @@ import re
 import sys
 from subprocess import Popen, PIPE, STDOUT
 import json
+import os
 
 # for labeling error messages w/ colors
 class bcolors:
@@ -26,9 +27,11 @@ linetypes = {
 if len(sys.argv) < 2:
     print (bcolors.FAIL+ "usage: make50 <program>" + bcolors.ENDC)
     exit()
-        
+    
+filepath = '/home/ubuntu/workspace/errors.json'
+
 # load errors from file
-with open('errors.json', 'r') as file:
+with open(filepath, 'r') as file:
     errors = json.loads(file.read())["errors"]
     for i in range (0, len(errors)):
         errors[i]["re"] = re.compile(errors[i]["actual"].replace('\\\\', '\\'))
