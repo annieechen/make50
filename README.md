@@ -1,6 +1,6 @@
 # make50
 
-A clang error message parser that accompanies official error messages with "friendlier" interpretations. Meant to help beginning C programmers, especially students in weeks 1 - 3 in [CS50](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x)
+A clang error message parser that accompanies official error messages with "friendlier" interpretations. Meant to help beginning C programmers, especially students in weeks 1 - 3 in [CS50](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x).
 
 Built by Annie Chen and Brian Yu at OS Hacks 2016.
 
@@ -18,12 +18,12 @@ cd ~/workspace
 to ensure you're in your workspace directory
 
 ```
-wget https://raw.githubusercontent.com/annieechen/make50/master/make50?token=APPLIqNTOF_xy077OVj4DbkiE1qjgICwks5Xu5dYwA%3D%3D
+wget https://raw.githubusercontent.com/annieechen/make50/master/make50 
 ```
 to download make50
 
 ```
-wget https://raw.githubusercontent.com/annieechen/make50/master/errors.json?token=APPLIoOk914990ABasIDtqBIDDCfXmcRks5Xu5e1wA%3D%3D
+wget https://rawgit.com/annieechen/make50/master/errors.json 
 ```
 to download errors.json
 ```
